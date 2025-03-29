@@ -31,7 +31,6 @@ public class DiscordBotHandler extends ListenerAdapter {
                 .setRawEventsEnabled(true)
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                 .addEventListeners(new DiscordBotHandler())
-                .setActivity(Activity.playing("ステータス"))
                 .build();
 
         CommandListUpdateAction commands = jda.updateCommands();
