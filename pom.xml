@@ -68,7 +68,7 @@
                     <archive>
                         <manifest>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                            <mainClass>DiscordBotHandler</mainClass>
+                            <mainClass>com.myapp.DiscordBotHandler</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
