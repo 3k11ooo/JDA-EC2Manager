@@ -2,7 +2,6 @@ package com.myapp;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
-import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.IntegrationType;
@@ -62,10 +61,14 @@ public class DiscordBotHandler extends ListenerAdapter {
             if (action.matches("up")) {
                 event.reply("Starting server...").queue();
                 requestToServer("start");
-
+                requestToServer("status");
             } else if (action.matches("down")) {
                 event.reply("Stopping server...").queue();
                 requestToServer("stop");
+                requestToServer("status");
+            } else if (action.matches("status")) {
+                event.reply("Checking server status...").queue();
+                requestToServer("status");
             }
         } catch (Exception e) {
             event.reply("An error occurred").setEphemeral(true).queue();
@@ -95,12 +98,7 @@ public class DiscordBotHandler extends ListenerAdapter {
                 .build();
 
         // Lambda関数を呼び出し
-        InvokeResponse response = lambdaClient.invoke(invokeRequest);
-
-        // レスポンスのステータスコードとペイロードを表示
-        System.out.println("Status Code: " + response.statusCode());
-        System.out.println("Response Payload: " + response.payload().asUtf8String());
-
+        lambdaClient.invoke(invokeRequest);
         // Lambdaクライアントを閉じる
         lambdaClient.close();
     }
