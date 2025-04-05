@@ -38,7 +38,7 @@ public class DiscordBotHandler extends ListenerAdapter {
                 Commands.slash("minecraft", "Mange the Minecraft Server")
                         .setContexts(InteractionContextType.GUILD)
                         .setIntegrationTypes(IntegrationType.ALL)
-                        .addOption(STRING, "action", "up or down", true)
+                        .addOption(STRING, "action", "up, down, or status", true)
         );
 
         commands.queue();
