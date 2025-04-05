@@ -61,7 +61,6 @@ public class DiscordBotHandler extends ListenerAdapter {
             if (action.matches("up")) {
                 event.reply("Starting server...").queue();
                 requestToServer("start");
-                requestToServer("status");
             } else if (action.matches("down")) {
                 event.reply("Stopping server...").queue();
                 requestToServer("stop");
